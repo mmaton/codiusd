@@ -13,7 +13,7 @@ export default class AdminServer {
   constructor (deps: Injector) {
     this.config = deps(Config)
     this.server = new Hapi.Server({
-      uri: 'http://local.codius.org:' + this.config.adminPort,
+      uri: this.config.publicUri.replace(/\/+$/, '') + this.config.adminPort,
       port: this.config.adminPort,
       address: '127.0.0.1'
     })
